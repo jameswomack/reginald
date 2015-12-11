@@ -1,41 +1,57 @@
-# clone-regexp [![Build Status](https://travis-ci.org/sindresorhus/clone-regexp.svg?branch=master)](https://travis-ci.org/sindresorhus/clone-regexp)
+# reginald [![Build Status](https://travis-ci.org/jameswomack/reginald.svg?branch=master)](https://travis-ci.org/jameswomack/reginald)
 
-> Clone and modify a [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) instance
+> Clone and modify a [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) instance, including removing, prepending, appending & replacing the source
 
+Reginald is based on [clone-regexp](https://github.com/sindresorhus/clone-regexp) by [sindresorhus](https://github.com/sindresorhus). Reginald adds source manipulation functionality on top of what clone-regexp offered
 
 ## Install
 
 ```sh
-$ npm install --save clone-regexp
+$ npm i -S reginald
 ```
 
 
 ## Usage
 
 ```js
-var cloneRegexp = require('clone-regexp');
+var reggie = require('reginald');
 var re = /[a-z]/gi;
 
-cloneRegexp(re);
+reggie(re);
 //=> /[a-z]/gi
 
-cloneRegexp(re) === re;
+reggie(re) === re;
 //=> false
 
-cloneRegexp(re, {global: false});
+reggie(re, {global: false});
 //=> /[a-z]/i
 
-cloneRegexp(re, {multiline: true});
+reggie(re, {multiline: true});
 //=> /[a-z]/gim
 
-cloneRegexp(re, {source: 'unicorn'});
-//=> /unicorn/gi
+reggie(re, {source: 'wombat'});
+//=> /wombat/gi
+
+reggie(/a/, {replace: ['a','b']})
+//=> /b/
+
+reggie(/ab/, {remove: 'a'})
+//=> /b/
+
+reggie(/a/, {prepend: 'b'})
+//=> /ba/
+
+reggie(/a/, {append: 'b'})
+//=> /ab/
+
+reggie(/ab/, {remove: 'b'})
+//=> /a/
 ```
 
 
 ## API
 
-### cloneRegexp(regexp, [options])
+### reggie(regexp, [options])
 
 #### regex
 
@@ -55,3 +71,4 @@ Optionally modify the cloned RegExp instance.
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [James Womack](http://womack.io)

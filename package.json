@@ -1,19 +1,19 @@
 {
-  "name": "clone-regexp",
+  "name": "reginald",
   "version": "1.0.0",
-  "description": "Clone and modify a RegExp instance",
+  "description": "Clone and modify a RegExp instance, including removing, prepending, appending & replacing the source",
   "license": "MIT",
-  "repository": "sindresorhus/clone-regexp",
+  "repository": "jameswomack/reginald",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "name": "James J. Womack",
+    "email": "james@womack.io",
+    "url": "http://womack.io"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node test.js | tap-spec"
   },
   "files": [
     "index.js"
@@ -30,10 +30,12 @@
     "mutate"
   ],
   "dependencies": {
-    "is-regexp": "^1.0.0",
-    "is-supported-regexp-flag": "^1.0.0"
+    "is-regexp": "1.0.0",
+    "is-supported-regexp-flag": "1.0.0",
+    "lodash.isarray": "3.0.4"
   },
   "devDependencies": {
-    "mocha": "*"
+    "tap": "2.3.1",
+    "tap-spec": "4.1.1"
   }
 }
